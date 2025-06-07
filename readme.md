@@ -63,4 +63,4 @@ The "Similar Vibe" Check: I use fancy tools (like semantic search) to see if my 
 
 My Pipeline is my Best Defense: Because I force the AI to build jokes from scratch (Angle -> Setup -> Punchline), it's much harder for it to accidentally plagiarize.
 
-And that's it! That's how I built an AI that doesn't just tell jokes, but tries to be a real comedian.
+And that's it! That's how I built an AI that doesn't just tell jokes, but tries to be a real comedian.s
