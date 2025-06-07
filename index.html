@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JokeBot: The AI Comedy Club</title>
+    <title>JokeBot: My AI Comedy Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -94,7 +94,7 @@
     <div class="w-full max-w-4xl mx-auto">
         <header class="text-center mb-8">
             <h1 class="font-bangers text-6xl md:text-8xl neon-text">JokeBot</h1>
-            <p class="text-lg text-gray-400">The AI Comedy Club</p>
+            <p class="text-lg text-gray-400">My Project in AI-Driven Comedy</p>
         </header>
 
         <main class="space-y-8">
@@ -102,7 +102,7 @@
             <section id="config-section" class="joke-card rounded-xl p-6 shadow-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label for="apiKey" class="block text-sm font-medium text-gray-300 mb-1">OpenRouter API Key</label>
+                        <label for="apiKey" class="block text-sm font-medium text-gray-300 mb-1">Your OpenRouter API Key</label>
                         <input type="password" id="apiKey" class="form-input w-full rounded-md p-2" placeholder="sk-or-v1-...">
                     </div>
                     <div class="flex items-end">
@@ -135,30 +135,29 @@
             
             <!-- "How It Works" Section (Initially Hidden) -->
             <section id="how-it-works" class="hidden joke-card rounded-xl p-6 shadow-lg space-y-4 text-gray-300">
-                <h2 class="text-2xl font-bold text-white">How It Works: PlanSearch for Jokes</h2>
-                <p>This app uses a method inspired by the <a href="https://arxiv.org/abs/2402.10781" target="_blank" class="text-pink-400 hover:underline">PlanSearch paper</a>. Instead of asking an LLM for a joke directly, we break down the creative process to generate more diverse and interesting results.</p>
+                <h2 class="text-2xl font-bold text-white">How I Built This: The Comedy Pipeline</h2>
+                <p>Instead of just asking an AI for a joke, I built a system inspired by the <a href="https://arxiv.org/abs/2402.10781" target="_blank" class="text-pink-400 hover:underline">PlanSearch paper</a>. This pipeline forces the AI to be more creative and less repetitive.</p>
                 
                 <div class="space-y-2">
-                    <h3 class="font-semibold text-lg text-pink-300">The Joke Generation Pipeline:</h3>
+                    <h3 class="font-semibold text-lg text-pink-300">My Joke Generation Pipeline:</h3>
                     <ol class="list-decimal list-inside space-y-1">
-                        <li><strong>1. Generate Angles:</strong> Given your topic (e.g., "penguins"), we first ask the Generator LLM to come up with several diverse observations or "angles". (e.g., "they wear tuxedos", "they waddle", "they can't fly"). This creates a variety of starting points.</li>
-                        <li><strong>2. Create Setups (Plans):</strong> For each angle, we ask the LLM to create a joke setup. This is like the "plan" in PlanSearch. An angle like "they wear tuxedos" might lead to a setup like "Why did the penguin get a job as a waiter?".</li>
-                        <li><strong>3. Write Punchlines (Solutions):</strong> With a setup in hand, we ask the LLM to generate multiple punchlines (the "solutions"). This completes the joke.</li>
-                        <li><strong>4. LLM-as-a-Judge:</strong> We present all the generated jokes (in a random order to avoid bias) to a separate "Judge" LLM. The Judge rates each joke on a scale of 1-10 for funniness and explains its reasoning.</li>
-                        <li><strong>5. Showtime!</strong> The app displays the top-rated jokes from the judge.</li>
+                        <li><strong>1. Brainstorm Angles:</strong> I give the AI a topic (like "penguins") and have it come up with funny observations, like "they wear tuxedos" or "they waddle."</li>
+                        <li><strong>2. Create Setups (The Plan):</strong> For each angle, the AI creates a joke setup. This is the "plan" for the joke.</li>
+                        <li><strong>3. Write Punchlines (The Execution):</strong> With a setup ready, the AI generates a few punchlines to finish the job.</li>
+                        <li><strong>4. Hire an AI Judge:</strong> I show all the jokes (in random order, to be fair) to a *second* AI. It rates each one from 1 to 10 for funniness.</li>
+                        <li><strong>5. Find the Headliner:</strong> My app then shows you the top-rated jokes from the judge!</li>
                     </ol>
                 </div>
 
                 <div class="space-y-2 pt-4 border-t border-gray-600">
-                    <h3 class="font-semibold text-lg text-pink-300">On Novelty &amp; Memorization</h3>
-                    <p><strong class="text-white">What is novelty in a joke?</strong> Novelty isn't just about being new; it's about creating a surprising, clever, and non-obvious connection between ideas. A truly novel joke isn't just a rehash of an old one with different words.</p>
-                    <p><strong class="text-white">How would you test if a joke is truly novel?</strong> This is a hard problem! A multi-pronged approach would be best:</p>
+                    <h3 class="font-semibold text-lg text-pink-300">My Thoughts on Novelty &amp; AI</h3>
+                    <p><strong class="text-white">What makes a joke novel?</strong> It's not just about being new. A novel joke makes a surprising and clever connection that you didn't see coming.</p>
+                    <p><strong class="text-white">How I'd test for novelty:</strong> This is tricky! I'd use a few methods:</p>
                     <ul class="list-disc list-inside space-y-1">
-                        <li><strong>Plagiarism Check:</strong> Use search engines to look for the exact joke or key phrases online. If it's already on a hundred joke websites, it's not novel.</li>
-                        <li><strong>Semantic Search:</strong> Check the generated joke against a large database of existing jokes using semantic search, which looks for similar meanings, not just exact words.</li>
-                        <li><strong>Human Panel:</strong> The ultimate test. Ask a diverse group of people if they've heard the joke before and how original they find it.</li>
+                        <li><strong>The Google Test:</strong> I'd search for the joke online. If it's everywhere, it's not novel.</li>
+                        <li><strong>Semantic Search:</strong> I'd check the joke against a huge database of other jokes to see if it's just a re-worded copy.</li>
                     </ul>
-                    <p><strong class="text-white">How does this pipeline combat memorization?</strong> By breaking the process into `Angle -> Setup -> Punchline`, we force the LLM to construct a joke from conceptual building blocks rather than just recalling a complete joke it saw during training. Generating diverse angles first is key—it pushes the model into less-traveled creative territory, making simple memorization less likely to produce a coherent and funny result. It encourages combinatorial creativity over simple retrieval.</p>
+                    <p><strong class="text-white">How this pipeline fights memorization:</strong> By breaking the process into `Angle -> Setup -> Punchline`, I force the AI to *build* a joke from ideas, not just recall a finished one. It's about creativity, not memory.</p>
                 </div>
             </section>
 
@@ -257,7 +256,7 @@
             return data.choices[0].message.content;
         }
 
-        // --- Joke Generation Pipeline ---
+        // --- My Joke Generation Pipeline ---
 
         async function generateJokesPipeline() {
             const topic = jokeTopicInput.value.trim();
@@ -274,14 +273,13 @@
 
             try {
                 // Step 1: Generate diverse angles
-                updateStatus("Thinking of some funny angles...");
+                updateStatus("Step 1: Brainstorming funny angles...");
                 const anglesPrompt = `Generate 4 diverse and distinct angles or observations about the topic "${topic}". These should be short, creative starting points for jokes. Output them as a simple list separated by newlines.`;
                 const anglesResponse = await makeApiCall(anglesPrompt, generatorModel);
                 const angles = anglesResponse.split('\n').map(a => a.trim()).filter(a => a);
-                console.log("Generated Angles:", angles);
 
                 // Step 2 & 3: Generate setups and punchlines for each angle
-                updateStatus("Turning angles into jokes...");
+                updateStatus("Step 2 & 3: Turning angles into jokes...");
                 let allJokes = [];
                 const jokePromises = angles.map(async (angle) => {
                     const setupPunchlinePrompt = `Based on the angle "${angle}" about "${topic}", create a complete joke with a setup and a punchline. Format the output as a JSON object with two keys: "setup" and "punchline".`;
@@ -298,15 +296,13 @@
                 });
                 
                 const generatedJokes = (await Promise.all(jokePromises)).filter(j => j);
-                console.log("Generated Jokes:", generatedJokes);
-
                 if (generatedJokes.length === 0) {
                    throw new Error("The generator model failed to create any valid jokes. Try a different model or topic.");
                 }
 
 
                 // Step 4: LLM-as-a-Judge
-                updateStatus("Asking the comedy critic for ratings...");
+                updateStatus("Step 4: Asking the AI comedy critic for ratings...");
                 const shuffledJokes = generatedJokes.sort(() => Math.random() - 0.5);
                 const judgePrompt = `You are a comedy critic. I will give you a list of jokes. Your task is to rate each joke for its funniness on a scale from 1 (not funny at all) to 10 (hilarious). Also provide a very brief one-sentence justification for your rating. 
                 
@@ -319,7 +315,6 @@
                 
                 const ratingsJsonString = await makeApiCall(judgePrompt, judgeModel, true);
                 const ratingsResult = JSON.parse(ratingsJsonString);
-                console.log("Judge Ratings:", ratingsResult);
                 
                 // Step 5: Display Results
                 updateStatus("And the headliners are...");
@@ -351,7 +346,7 @@
 
         function showError(message) {
             jokesOutput.innerHTML = '';
-            errorOutput.textContent = `Whoops! ${message}`;
+            errorOutput.textContent = `Whoops! The AI comedian slipped on a banana peel. (Error: ${message})`;
             errorOutput.classList.remove('hidden');
         }
 
@@ -364,7 +359,6 @@
         function displayJokes(ratedJokes) {
             clearOutput();
             
-            // Sort jokes by rating in descending order
             ratedJokes.sort((a, b) => (b.rating || 0) - (a.rating || 0));
 
             if (ratedJokes.length === 0) {
