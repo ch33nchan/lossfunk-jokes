@@ -1,12 +1,11 @@
-# jokebot/app.py
+
 from flask import Flask, request, jsonify
-from.joke_pipeline_manager import JokePipelineManager # Corrected import
-from.transparency_module import TransparencyProvider # Corrected import
+from.joke_pipeline_manager import JokePipelineManager 
+from.transparency_module import TransparencyProvider
 import os
 
 app = Flask(__name__)
-# Store last run data in app.config for simplicity in a single-user demo context
-# For a multi-user app, this would need a session or a more robust per-request cache
+
 app.config = {} 
 
 transparency_provider = TransparencyProvider()
@@ -26,7 +25,7 @@ def generate_jokes_endpoint():
         return jsonify({"error": "Missing 'topic' or 'user_openrouter_api_key'"}), 400
 
     try:
-        # joke_corpus_path is omitted, so it defaults to None in JokePipelineManager
+      
         pipeline_manager = JokePipelineManager(openrouter_api_key=user_api_key) 
         top_jokes = pipeline_manager.generate_and_evaluate_jokes(
             topic,
@@ -34,7 +33,7 @@ def generate_jokes_endpoint():
             num_top_jokes=int(num_top_jokes)
         )
         
-        # Store transparency data from this specific run
+    
         app.config = pipeline_manager.get_last_run_transparency_data()
 
         return jsonify({"top_jokes": top_jokes}), 200
@@ -58,6 +57,3 @@ def transparency_info_endpoint():
         return jsonify(viz_data), 200
     else:
         return jsonify({"error": "Invalid transparency info type requested. Use 'plansearch_code' or 'pipeline_visualization'."}), 400
-
-# if __name__ == '__main__':
-#     app.run(debug=True, port=5001)
