@@ -1,11 +1,11 @@
-# jokebot/novelty_checker.py
+
 import re
 from typing import Optional, List, Dict, Any
 from nltk.util import ngrams
 from nltk.tokenize import word_tokenize
 from.openrouter_client import OpenRouterClient # Corrected import
 
-# For web search - ensure you pip install duckduckgo-search
+
 try:
     from duckduckgo_search import DDGS
 except ImportError:
@@ -19,8 +19,7 @@ class NoveltyChecker:
         self.known_jokes_corpus: List[str] = # No longer loading from file
         self.transparency_data = {"novelty_checks":}
 
-        # if joke_corpus_path: # This logic is now effectively disabled
-        #     print(f"Warning: Local joke corpus at {joke_corpus_path} is configured but will NOT be used in this version.")
+       
 
     def _preprocess_text(self, text: str) -> str:
         text = text.lower()

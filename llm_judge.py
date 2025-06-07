@@ -1,4 +1,4 @@
-# jokebot/llm_judge.py
+
 import json
 from typing import Dict, Optional, Tuple, List
 from.openrouter_client import OpenRouterClient 
@@ -36,7 +36,7 @@ class LLMJudge:
             "IMPORTANT: Evaluate objectively. Do not let the length of the joke unduly influence your funniness score. "
             "A short joke can be funnier than a long one. Focus on cleverness and impact. "
             "The order of presentation should not affect your judgment if multiple jokes were being compared (though here you evaluate one)."
-        ) # [9, 10, 11, 6, 12, 13]
+        ) 
 
         return (
             f"You are a discerning comedy critic. Your task is to evaluate the following joke based on the provided rubric. "
@@ -55,7 +55,7 @@ class LLMJudge:
         prompt_content = self._construct_judge_prompt(joke_text, rubric, bias_instructions)
         
         messages = [{"role": "user", "content": prompt_content}]
-        response_format_json = {"type": "json_object"} # [3]
+        response_format_json = {"type": "json_object"} 
         
         raw_response = self.llm_client.get_completion(
             judge_model_name, 

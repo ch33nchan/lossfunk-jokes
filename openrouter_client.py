@@ -1,4 +1,4 @@
-# jokebot/openrouter_client.py
+
 import requests
 import json
 from typing import List, Dict, Any, Optional
@@ -10,15 +10,15 @@ class OpenRouterClient:
         if not api_key:
             raise ValueError("OpenRouter API key is required.")
         self.api_key = api_key
-        self.site_url = "YOUR_SITE_URL_HERE" # Optional: Replace with your site URL
-        self.site_name = "JokeBot" # Optional: Replace with your app name
+        self.site_url = "YOUR_SITE_URL_HERE" 
+        self.site_name = "JokeBot" 
 
     def _make_request(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",
-            "HTTP-Referer": self.site_url, # Optional: For OpenRouter analytics [3, 4]
-            "X-Title": self.site_name,      # Optional: For OpenRouter analytics [3, 4]
+            "HTTP-Referer": self.site_url, 
+            "X-Title": self.site_name,      
         }
         try:
             response = requests.post(OPENROUTER_API_URL, headers=headers, data=json.dumps(payload))
