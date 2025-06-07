@@ -36,7 +36,7 @@ AI delivers: "Because he was born to serve!"
 
 By breaking it down like this, I force the AI to be creative instead of just pulling a random penguin joke from its memory.
 
-The Comedy Judge: My AI Critic 🤖ന്യാ
+The Comedy Judge: My AI Critic 🤖
 Okay, so I have a bunch of jokes. Are they actually funny? Time to call in my Judge AI.
 
 The Problem: AI judges can be biased. They sometimes prefer longer jokes or the first joke they see, even if it's terrible.
@@ -63,4 +63,4 @@ The "Similar Vibe" Check: I use fancy tools (like semantic search) to see if my 
 
 My Pipeline is my Best Defense: Because I force the AI to build jokes from scratch (Angle -> Setup -> Punchline), it's much harder for it to accidentally plagiarize.
 
-And that's it! That's how I built an AI that doesn't just tell jokes, but tries to be a real comedian.s
+And that's it! That's how I built an AI that doesn't just tell jokes, but tries to be a real comedian.
