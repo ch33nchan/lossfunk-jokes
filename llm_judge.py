@@ -1,15 +1,14 @@
 # jokebot/llm_judge.py
 import json
 from typing import Dict, Optional, Tuple, List
-from.openrouter_client import OpenRouterClient # Corrected import
-
+from.openrouter_client import OpenRouterClient 
 class LLMJudge:
     def __init__(self, llm_client: OpenRouterClient):
         self.llm_client = llm_client
         self.transparency_data = {"evaluations":}
 
 
-    def get_joke_evaluation_rubric(self) -> str: # [6, 7, 8]
+    def get_joke_evaluation_rubric(self) -> str: 
         return """
         Please evaluate the joke based on the following criteria. Provide a score from 1 (very poor) to 10 (excellent) for each, and an overall funniness score (1-10). Also, provide a brief overall rationale.
 
