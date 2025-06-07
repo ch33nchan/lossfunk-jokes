@@ -1,4 +1,4 @@
-# jokebot/plansearch_for_jokes.py
+
 from typing import List, Dict, Any, Optional, Set, Tuple
 import itertools
 from.openrouter_client import OpenRouterClient # Corrected import
@@ -10,7 +10,7 @@ class PlanSearcherForJokes:
 
 
     def _prompt_for_observations(self, topic: str, model_name: str, existing_observations: Optional[List[str]] = None) -> List[str]:
-        """Generates first-order or second-order observations. [5]"""
+        
         if existing_observations:
             prompt_content = (
                 f"Given the topic '{topic}' and the following initial observations:\n"
@@ -38,7 +38,7 @@ class PlanSearcherForJokes:
         return
 
     def _generate_observation_combinations(self, observations: List[str], max_subset_size: int = 2) -> List]:
-        """Generates subsets of observations as per PLANSEARCH. [5]"""
+       
         combinations =
         for i in range(1, max_subset_size + 1):
             for subset in itertools.combinations(observations, i):
@@ -46,7 +46,7 @@ class PlanSearcherForJokes:
         return combinations
 
     def _prompt_for_joke_plan(self, topic: str, observation_combo: Tuple[str,...], model_name: str) -> Optional[str]:
-        """Formulates a joke plan based on a combination of observations. [5]"""
+        
         observations_str = "\n".join([f"- {obs}" for obs in observation_combo])
         prompt_content = (
             f"Topic: '{topic}'\n"
@@ -67,7 +67,7 @@ class PlanSearcherForJokes:
         return plan
 
     def _prompt_for_joke_instantiation(self, topic: str, plan: str, model_name: str, critique: Optional[str] = None) -> Optional[str]:
-        """Instantiates a joke from a plan, optionally with critique. [5]"""
+       
         if critique:
             prompt_content = (
                 f"Topic: '{topic}'\n"
@@ -93,7 +93,7 @@ class PlanSearcherForJokes:
         return joke
 
     def _prompt_for_critique(self, joke: str, plan: str, model_name: str) -> Optional[str]:
-        """Generates critique for a joke based on a plan (the "your idea is wrong" adaptation [5])."""
+        
         prompt_content = (
             f"Joke Plan: {plan}\n"
             f"Generated Joke: \"{joke}\"\n\n"
@@ -134,7 +134,7 @@ class PlanSearcherForJokes:
         for i, combo in enumerate(first_order_combinations):
             if len(second_order_obs_sources) >= max_plans_to_develop * 1.5: # Limit calls
                 break
-            # print(f"Generating second-order observations for combo: {combo}")
+            
             derived_obs_list = self._prompt_for_observations(topic, observation_model, existing_observations=list(combo))
             if derived_obs_list:
                 derived_obs_list = derived_obs_list[:num_second_order_obs_per_combo]
@@ -152,21 +152,20 @@ class PlanSearcherForJokes:
                 break
             if not obs_combo_for_plan: continue
 
-            # print(f"Formulating plan for observation combo: {obs_combo_for_plan}")
+           
             plan = self._prompt_for_joke_plan(topic, obs_combo_for_plan, plan_model)
             if not plan:
                 continue
             
             developed_plans_count += 1
-            # print(f"Generated Plan: {plan}")
+           
 
             joke = self._prompt_for_joke_instantiation(topic, plan, joke_model)
             if joke:
                 candidate_jokes_details.append({
                     "joke_text": joke, "plan": plan, "observations_used": obs_combo_for_plan, "refined": False
                 })
-                # print(f"Generated Joke (initial): {joke}")
-
+                
                 if use_critique_refinement and critique_model:
                     critique = self._prompt_for_critique(joke, plan, critique_model)
                     if critique:
@@ -176,7 +175,7 @@ class PlanSearcherForJokes:
                             candidate_jokes_details.append({
                                 "joke_text": refined_joke, "plan": plan, "observations_used": obs_combo_for_plan, "refined": True, "critique": critique
                             })
-                            # print(f"Generated Joke (refined): {refined_joke}")
+                            
         
         print(f"PLANSEARCH finished. Generated {len(candidate_jokes_details)} candidate jokes.")
         return candidate_jokes_details
