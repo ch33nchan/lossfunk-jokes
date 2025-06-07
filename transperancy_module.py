@@ -1,9 +1,9 @@
-# jokebot/transparency_module.py
+
 from typing import Dict, List, Any, Optional
 
 class TransparencyProvider:
     def get_plansearch_code_details(self) -> Dict]]:
-        # These are static descriptions of the code's intent
+
         return {
             "plansearch_for_jokes.py": [
                 {
@@ -88,8 +88,7 @@ def assess_perceived_novelty_with_llm(self, joke_text: str, judge_model_name: st
         }
 
     def get_pipeline_visualization_data(self, last_run_data: Optional = None) -> Dict[str, Any]:
-        # This creates a generic pipeline structure.
-        # `last_run_data` can be used to annotate it with specifics from the actual run.
+
         
         nodes =", "type": "process_group"},
             {"id": "obs1", "label": "1. First-Order Observations", "type": "process", "parent": "plansearch_group"},
@@ -134,8 +133,7 @@ def assess_perceived_novelty_with_llm(self, joke_text: str, judge_model_name: st
             "judge_group": "Handles subjective funniness evaluation using a structured rubric and an LLM. Includes prompt-based bias mitigation for verbosity and positional effects. [9, 10, 11, 6, 12, 13]"
         }
         
-        # You can augment nodes with data from last_run_data if available
-        # For example, show how many observations/plans were actually generated.
+
         if last_run_data and last_run_data.get('plansearch_data'):
             ps_data = last_run_data['plansearch_data']
             num_obs = len(ps_data.get('observations',))
