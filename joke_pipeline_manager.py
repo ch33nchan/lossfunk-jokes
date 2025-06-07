@@ -1,16 +1,16 @@
-# jokebot/joke_pipeline_manager.py
+
 from typing import List, Dict, Any, Optional
-from.openrouter_client import OpenRouterClient # Corrected import
-from.plansearch_for_jokes import PlanSearcherForJokes # Corrected import
-from.llm_judge import LLMJudge # Corrected import
-from.novelty_checker import NoveltyChecker # Corrected import
+from.openrouter_client import OpenRouterClient
+from.plansearch_for_jokes import PlanSearcherForJokes 
+from.llm_judge import LLMJudge 
+from.novelty_checker import NoveltyChecker 
 
 class JokePipelineManager:
-    def __init__(self, openrouter_api_key: str, joke_corpus_path: Optional[str] = None): # joke_corpus_path defaults to None
+    def __init__(self, openrouter_api_key: str, joke_corpus_path: Optional[str] = None):
         self.llm_client = OpenRouterClient(api_key=openrouter_api_key)
         self.plan_searcher = PlanSearcherForJokes(self.llm_client)
         self.llm_judge = LLMJudge(self.llm_client)
-        # Pass joke_corpus_path (which will be None if not provided)
+     
         self.novelty_checker = NoveltyChecker(self.llm_client, joke_corpus_path=joke_corpus_path) 
         
         self.last_run_transparency_data = {}
@@ -22,7 +22,7 @@ class JokePipelineManager:
                                     use_critique_refinement: bool = True) -> List]:
         print(f"Pipeline started for topic: {topic} with LLM choices: {user_llm_choices}")
         
-        # Using free models from OpenRouter as defaults [1, 2]
+        
         obs_model = user_llm_choices.get("observation", "google/gemma-3-27b") 
         plan_model = user_llm_choices.get("plan", "google/gemma-3-27b")
         joke_model = user_llm_choices.get("joke_instantiation", "deepseek/deepseek-v3")
@@ -52,18 +52,16 @@ class JokePipelineManager:
         evaluated_jokes =
         for i, joke_detail in enumerate(candidate_jokes_details):
             joke_text = joke_detail["joke_text"]
-            # print(f"\nProcessing candidate joke {i+1}/{len(candidate_jokes_details)}: \"{joke_text[:50]}...\"")
-
+           
             novelty_scores = self.novelty_checker.calculate_overall_novelty_score(
                 joke_text,
                 perceived_novelty_model_name=novelty_llm_model
             )
             joke_detail["novelty_scores"] = novelty_scores
-            # print(f"Novelty Assessment: {novelty_scores}")
-
+            
             evaluation = self.llm_judge.evaluate_joke(joke_text, judge_model)
             joke_detail["evaluation"] = evaluation
-            # print(f"LLM Judge Evaluation: {evaluation}")
+
 
             if evaluation and "overall_funniness" in evaluation:
                 funniness_score = float(evaluation.get("overall_funniness", 0))
@@ -86,7 +84,7 @@ class JokePipelineManager:
             'llm_judge_data': self.llm_judge.get_transparency_data(),
             'final_ranked_jokes_summary': [{ "joke": jk["joke_text"][:60]+"...", "score": jk.get("combined_score")} for jk in ranked_jokes[:num_top_jokes]]
         }
-        # print(f"\nTop {num_top_jokes} jokes selected.")
+
         return ranked_jokes[:num_top_jokes]
 
     def get_last_run_transparency_data(self) -> Dict:
